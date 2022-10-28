@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <title>Chat Service</title>
+    </head>
+
+    <body>
+        <div>
+            <h3>Messages</h3>
+            <ul th:each = "message: ${messages}">
+                <li>
+                    <p th:text="*{message.messageContent}"></p>
+                    <p th:text="*{message.author}"></p>
+                    <p th:text="*{message.date}"></p>
+                </li>
+            </ul>
+
+            <h3>New Message</h3>
+            <form action="#" th:action="@{/newMessage}" method="post">
+                <input type="number" name="channelId" placeholder="Channel id"/>
+                <input type="text" name="channelSecret" placeholder="Channel secret"/>
+                <input type="text" name="content" placeholder="Your Message" required/>
+
+                <button type="submit">Send</button>
+            </form>
+
+            <h3>Change Channel</h3>
+            <form action="#" th:action="@{/changeChannel}" method="post">
+                <input type="text" name="channelId" placeholder="Channel Id"/>
+
+                <input type="text" name="channelSecret" placeholder="Channel secret"/>
+
+                <button type="submit">Change</button>
+            </form>
+
+            <h3>New Channel</h3>
+            <form action="#" th:action="@{/newChannel}" method="post">
+                <input type="text" name="name" placeholder="Channel name" required/>
+
+                <input type="text" name="description" placeholder="Channel description" required/>
+
+                <button type="submit">Create</button>
+            </form>
+
+            <h3>Update Channel</h3>
+            <a th:href="@{/updateChannel}">Update Channel</a>
+            <h3>Update User</h3>
+            <a th:href="@{/update}">Update user</a>
+            <h4>Log out</h4>
+            <a th:href="@{/logout}">Log out</a>
+
+
+        </div>
+    </body>
+</html>

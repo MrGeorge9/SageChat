@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <title>Chat Service</title>
+    </head>
+
+    <body>
+        <div>
+            <h3>User channels</h3>
+            <ul th:each = "channel: ${userChannels}">
+                <li th:text="*{channel}"></li>
+            </ul>
+            <h3>Update channel</h3>
+            <form action="#" th:action="@{/updateChannel}" method="post">
+                <input type="number" name="id" placeholder="Channel id" required/>
+                <input type="text" name="name" placeholder="Channel name" required/>
+                <input type="text" name="description" placeholder="Channel description" required/>
+                <input type="text" name="iconurl" placeholder="Icon url" required/>
+
+                <button type="submit">Update</button>
+            </form>
+
+            <a th:href="@{/chatScreen}">Get back</a>
+
+        </div>
+    </body>
+</html>
